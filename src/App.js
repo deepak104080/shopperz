@@ -1,3 +1,4 @@
+import React, {useContext, useEffect, useState} from 'react';
 import './App.css';
 import './index.css';
 import '../node_modules/bootstrap/dist/css/bootstrap.min.css';
@@ -9,21 +10,38 @@ import Menu from './common/Menu';
 
 import Home from './Home';
 import Category from './Category';
+import Product from './Product';
 import NotFound from './NotFound';
 
+export const GlobalContext = React.createContext();
+
 function App() {
+
+  const initialObj = {
+    cartTemp : [],
+    loginStatus: false,
+    userName: '',
+  }
+
+  const [store, setStore] = useState(initialObj);
+
+  useEffect(() => {
+    console.log('Context - ', store);
+  }, [store])
+
   return (
     <div className="">
       <BrowserRouter>
+        <GlobalContext.Provider value={{store, setStore}}>
         <div className='container'>
 
           <Header/>
           <Menu/>
-          
 
           <Routes>
             <Route path='/home' element={<Home />} />
             <Route path='/category/:name' element={<Category/>} />
+            <Route path='/product/:id' element={<Product/>} />
             {/* <Route path='/product' element={} />
             <Route path='/wishlist' element={} />
             <Route path='/cart' element={} />
@@ -45,6 +63,7 @@ function App() {
           <Footer/>
             
         </div>
+        </GlobalContext.Provider>
         </BrowserRouter>
     </div>
   );

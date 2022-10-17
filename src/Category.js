@@ -1,5 +1,5 @@
 import React, {useState, useEffect} from 'react'
-import { useParams } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 
 const Category = () => {
 
@@ -25,15 +25,17 @@ const Category = () => {
             <div className='col-12'>
                 <div className='row'>
                 { 
-                    products && products.map((item) => (
-                        <div class="col-4 card">
-                            <img src={item.image} class="card-img-top" alt="..."/>
-                            <div class="card-body">
-                                <h5 class="card-title">{item.title}</h5>
-                                <p class="card-text">{item.price}</p>
-                                
+                    products && products.map((item, index) => (
+                        <Link to={`/product/${item.id}`} key={item.title + index}>
+                            <div className="col-4 card">
+                                <img src={item.image} className="card-img-top" alt="..."/>
+                                <div className="card-body">
+                                    <h5 className="card-title">{item.title}</h5>
+                                    <p className="card-text">{item.price}</p>
+                                    
+                                </div>
                             </div>
-                        </div>
+                        </Link>
                     ))
                 }
                 </div>
