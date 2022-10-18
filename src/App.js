@@ -11,6 +11,8 @@ import Menu from './common/Menu';
 import Home from './Home';
 import Category from './Category';
 import Product from './Product';
+import Cart from './Cart';
+import Checkout from './Checkout';
 import NotFound from './NotFound';
 
 export const GlobalContext = React.createContext();
@@ -21,6 +23,7 @@ function App() {
     cartTemp : [],
     loginStatus: false,
     userName: '',
+    userDetails: {}
   }
 
   const [store, setStore] = useState(initialObj);
@@ -42,6 +45,8 @@ function App() {
             <Route path='/home' element={<Home />} />
             <Route path='/category/:name' element={<Category/>} />
             <Route path='/product/:id' element={<Product/>} />
+            <Route path='/cart/' element={<Cart/>} />
+            <Route path='/checkout/' element={<Checkout/>} />
             {/* <Route path='/product' element={} />
             <Route path='/wishlist' element={} />
             <Route path='/cart' element={} />

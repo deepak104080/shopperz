@@ -26,16 +26,14 @@ const Category = () => {
                 <div className='row'>
                 { 
                     products && products.map((item, index) => (
-                        <Link to={`/product/${item.id}`} key={item.title + index}>
-                            <div className="col-4 card">
+                            <Link className="col-4 card" to={`/product/${item.id}`} key={item.title + index}>
                                 <img src={item.image} className="card-img-top" alt="..."/>
                                 <div className="card-body">
                                     <h5 className="card-title">{item.title}</h5>
                                     <p className="card-text">{item.price}</p>
                                     
                                 </div>
-                            </div>
-                        </Link>
+                            </Link>
                     ))
                 }
                 </div>

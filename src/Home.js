@@ -1,4 +1,5 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState } from 'react';
+import {Link} from 'react-router-dom';
 
 const Home = () => {
 
@@ -20,15 +21,15 @@ const Home = () => {
             <div className='col-12'>
                 <div className='row'>
                 { 
-                    products && products.map((item) => (
-                        <div className="col-4 card" key={item.id}>
+                    products && products.map((item, index) => (
+                        <Link className="col-4 card" to={`/product/${item.id}`} key={item.title + index}>
                             <img src={item.image} className="card-img-top" alt="..."/>
                             <div className="card-body">
                                 <h5 className="card-title">{item.title}</h5>
                                 <p className="card-text">{item.price}</p>
                                 
                             </div>
-                        </div>
+                        </Link>
                     ))
                 }
                 </div>

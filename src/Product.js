@@ -1,5 +1,5 @@
 import React, {useState, useEffect, useContext} from 'react'
-import { useParams } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 import { GlobalContext } from './App';
 
 const Product = () => {
@@ -19,7 +19,13 @@ const Product = () => {
             if(item.id === product.id) {
                 setCartStatus(true);
             }
+            else {
+                setCartStatus(false);
+            }
         })
+        if(localStore.store.cartTemp.length === 0) {
+            setCartStatus(false);
+        }
     })
 
     useEffect(() => {
@@ -56,6 +62,17 @@ const Product = () => {
         })
     }
 
+    const removeFromCart = (obj) => {
+        console.log('Product to be added in cart - ', obj);
+        let tempArr = localStore.store.cartTemp.filter((item) => {
+            return item.id !== obj.id
+        })
+        localStore.setStore({
+            ...localStore.store,
+            cartTemp: [...tempArr]
+        })
+    }
+
 
     return (
         <div className='row'>
@@ -72,7 +89,12 @@ const Product = () => {
                         <h4>Average Rating - {product.rating && product.rating.rate}</h4>
                     </div>
                     <div className='col-4'>
-                        {!cartStatus && (<button className='btn btn-primary' onClick={() => addToCart(product)}>Add to Cart</button>)}
+                        {cartStatus ? (<button className='btn btn-danger' onClick={() => removeFromCart(product)}>Remove From Cart</button>)
+                        :
+                        (<button className='btn btn-primary' onClick={() => addToCart(product)}>Add to Cart</button>)}
+
+                        {cartStatus && (<Link to="/cart" className='btn btn-warning'>Move To Cart</Link>)}
+
                         {/* show remove cart button
                         create cart page */}
                         <br></br>

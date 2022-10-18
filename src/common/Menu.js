@@ -5,11 +5,11 @@ const Menu = () => {
   return (
     <div className='row'>
         <div className='col-12 bg-warning bg-opacity-50'>
-            <Link to="/home">Home</Link>
-            <Link to="/category/jewelery">Jewellery</Link>
-            <Link to="/category/men's clothing">Mens' Clothing</Link>
-            <Link to="/category/electronics">Electronics</Link>
-            <Link to="/category/women's clothing">Women's Clothing</Link>
+            <Link className="btn btn-info" to="/home">Home</Link>
+            <Link className="btn btn-warning" to="/category/jewelery">Jewellery</Link>
+            <Link className="btn btn-primary" to="/category/men's clothing">Mens' Clothing</Link>
+            <Link className="btn btn-info" to="/category/electronics">Electronics</Link>
+            <Link className="btn btn-warning" to="/category/women's clothing">Women's Clothing</Link>
         </div>
     </div>
   )
