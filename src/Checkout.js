@@ -32,7 +32,7 @@ const Checkout = () => {
 
             </div>
             {orderStatus && (
-                <div class="alert alert-success" role="alert">
+                <div className="alert alert-success" role="alert">
                     Your order has been placed successfully.<br></br>
                     Estimated Delivery Day - 5 Days
                 </div>)

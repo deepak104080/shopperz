@@ -9,7 +9,7 @@ const Category = () => {
     const [products, setProducts] = useState([]);
 
     const fetchProducts = async() => {
-        const response = await fetch(`https://fakestoreapi.com/products/category/${name}`)
+        const response = await fetch(`http://localhost:4000/products/searchbycategory/${name}`)
         const data = await response.json();
         console.log(data);
         setProducts(data);
