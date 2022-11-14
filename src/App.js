@@ -14,6 +14,8 @@ import Product from './Product';
 import Cart from './Cart';
 import Checkout from './Checkout';
 import NotFound from './NotFound';
+import Register from './Register';
+import Login from './Login';
 
 export const GlobalContext = React.createContext();
 
@@ -23,7 +25,8 @@ function App() {
     cartTemp : [],
     loginStatus: false,
     userName: '',
-    userDetails: {}
+    userDetails: {},
+    lastPage: ''
   }
 
   const [store, setStore] = useState(initialObj);
@@ -47,6 +50,8 @@ function App() {
             <Route path='/product/:id' element={<Product/>} />
             <Route path='/cart/' element={<Cart/>} />
             <Route path='/checkout/' element={<Checkout/>} />
+            <Route path='/register/' element={<Register/>} />
+            <Route path='/login/' element={<Login/>} />
             {/* <Route path='/product' element={} />
             <Route path='/wishlist' element={} />
             <Route path='/cart' element={} />
